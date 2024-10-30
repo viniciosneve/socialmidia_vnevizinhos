@@ -1,0 +1,23 @@
+@startuml diagrama de classe
+
+entity User {
+    *id
+    *name
+    *lastname
+    *birthdate
+    *nickname
+    *password
+}
+
+entity Login {
+    *login
+    *password
+}
+
+entity Post {
+    User_id <<FK>>
+    *title
+    *comment
+}
+
+@enduml

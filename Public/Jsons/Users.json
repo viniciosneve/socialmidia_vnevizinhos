@@ -1,0 +1,25 @@
+{
+    "Users": {
+        "1": {
+            "name": "ddd",
+            "lastname": "ddd",
+            "nickname": "ddd",
+            "birthdate": "12\/12\/2012",
+            "user_on": "true"
+        },
+        "2": {
+            "name": "dhuiasd",
+            "lastname": "iasdiu",
+            "nickname": "ddddd",
+            "birthdate": "12\/01\/2016",
+            "user_on": "true"
+        },
+        "3": {
+            "name": "vnevizinhos",
+            "lastname": "vnevizinhos",
+            "nickname": "vnevizinhos",
+            "birthdate": "12\/12\/2012",
+            "user_on": "true"
+        }
+    }
+}
