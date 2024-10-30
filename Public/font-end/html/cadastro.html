@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/cadastro.css">
+    <title>Vnevizinhos</title>
+</head>
+<body>
+    <h1>Vnevizinhos</h1>
+    <div id="divHaveButtons">
+        <a href="http://localhost:8000/html/entrada.html"><p class="pFromA">Entrada</p></a>
+        <a href="http://localhost:8000/html/login.html"><p class="pFromA">Login</p></a>
+    </div>
+    <div id="divHaveForm">
+        <h2>Crie a sua conta para ter acesso a nossa rede social!!!!!</h2>
+
+        <form id="sendRegister" method="post" action= "../Public/back-end/manage/getCadastro.php">
+            <label id= "labelNomeNovoUsuario" for= "name"><h2>Primeiro Nome: </h2></label>
+            <input id= "name" name="name" type= "text" autocomplete="off" placeholder= "Nome">
+
+            <label id= "labelSobreNomeNovoUsuario" for= "lastname"><h2>Sobre Nome: </h2></label>
+            <input id= "lastname" name="lastname" type= "text" autocomplete="off" placeholder= "Sobrenome">
+
+            <label id= "labelDataNascimentoNovoUsuario" for= "birthdate"><h2>Data de nascimento: </h2></label>
+            <input id= "birthdate" name="birthdate" type = "text" autocomplete="off" placeholder= "00/00/0000">
+
+            <label id= "labelNicknameNovoUsuario" for= "nickname"><h2>apelido do usuário: </h2></label>
+            <input id= "nickname" name="nickname" type = "text" autocomplete="off" placeholder= "Nickname">
+
+            <label id= "labelPasswordNovoUsuario" for= "password"><h2>senha de acesso: </h2></label>
+            <input id= "password" name="password" type = "password" autocomplete="off" placeholder= "Senha">
+
+            <label id= "labelConfirnPasswordNovoUsuario" for= "confirnPassword"><h2>confirme a sua senha: </h2></label>
+            <input id= "confirnPassword" name="confirnPassword" type = "password" autocomplete="off" placeholder= "confirma a sua senha">
+
+            <button type="submit">enviar</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy;2024 Vinicios Neves. Todos os direitos reservados</p>
+    </footer>
+
+    <script src= "../JSs/cadastro.js"></script>
+    
+</body>
+</html>

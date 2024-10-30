@@ -1,0 +1,113 @@
+Objetivo principal:
+    Criar uma rede social com varias funcionalidades.
+
+
+Metas superficiais:
+     Uma pagina para criar uma conta.
+
+     Uma pagina de login, com uma descrição do que ela é e de todas as suas
+    funcionalidades.
+
+     A pagina de acesso dos usuários cadastrados.
+
+
+Metas elaboradas:
+     A primeira pagina deve ter:
+
+      Criar um design visual para a pagina de cadastrado. (completo)
+
+      Criar um formalário com campos pedindo: (completo)
+        nome inicial
+        sobre nome
+        data de nascimento da pessoa
+        nickname
+        login
+        password
+    
+      Adapitar os inputs com o design da pagina. (completo)
+
+      Fazer testes!!!!!!!!!!!!
+
+      Vamos criar uma tabela no banco de dados para receber as informações de castro 
+    do usuário e fazer a conexão com o banco de dados no PHP. (completo)
+
+      Vamos criar uma função para enviar as informações para o banco de dados. (completo)
+
+      Pegar as informações como: (completo)
+       id
+       nome
+       comenatários
+       on/oof
+    e passa para um arquivo JSON. (completo)
+
+      Fazer teste!!!!!!!!!!!!!!
+    
+      Quando a pessoa finalizar o cadastro, redirecionar para a pagina de login. (pedente) 
+
+      Colocar um botão para redirecionar a pagina para a pagina de login. (pendente)
+    
+
+        =========================
+
+
+     A segunda pagina deve ter:
+      
+      Criar um ou dois paragrafos descrevendo o que é
+    a rede social. (Incompleto)
+
+      Criar dois botões no campo superior direito da tela, um para a pagina de
+    cadastramento, e o outro que cria um formulário para pegar as informações
+    de login, e senha do usuário. (Incompleto)
+
+      Depois verificar as informações que veio do formalário de login para
+    evitar hackeamento e evitar campos vazios.
+
+      Depois que tudo isso estiver verificado enviar as inforamção
+    para um arquivo JSON, pegas as informações do arquivo JSON com
+    o PHP e fazer uma verificação de login e senha, depois que as
+    informações forem confirmadas, deve colocar no DB e no JSON, que
+    o usuário está on.
+
+      Depois com o JS pegas a informação para saber se o usuário está
+    logado ou não, se estiver logado redirecionar para a pagina dos
+    usuários, caso não esteja logado, não fazer o redirecionamento.
+
+ ===========================================
+
+
+     A terceira pagina deve ter:
+
+      Criar uma coluna que indica se o usuário está logado ou não,
+    e depois usar a conexão com o banco de dados para colocar que
+    o usuário está logado quando ele fazer o login.
+
+      Pega a inforamção de que o usuário está logado ou não no
+    banco de dados e passar para o JSON de que ele esta logado.
+
+      Nas paginas de login e cadastramento, vamos usar o JS para
+    pegar a inforamção do JSON para ver se o usuário está logado
+    ou não, se a inforamção der como que o usuário está logado,
+    ambas as pagina irão redirecionar para a pagina dos usuários,
+    se não estiver logado, então não será redirecionado para a pagina dos
+    usuários.
+
+      Usar o JS para verificar o JSON para saber se o usuário está
+    logado ou não, se não estiver logado, a pagina deve redirecionar
+    o mesmo para a pagina de login, caso esteja logado permanecer o
+    usuario lá mesmo.
+
+      Vamos criar um campo de texto para que o usuário possa criar
+    o seu comenatário, quando criado, deve primeiro ser redirecionado
+    para um arquivo JSON, e então o PHP deve pegar essa nova
+    informação e colocar no banco de dados e no JSON de comenatários.
+
+      Vamos pegar o JSON dos comentarios com o JS e mandar para a pagina
+    e lá colocar todos os comenatários em ordem decresente.
+
+     botão de deslogar.
+
+      
+
+
+    
+

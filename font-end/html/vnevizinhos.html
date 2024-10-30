@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/vnevizinhos.css">
+    <title>Vnevizinhos</title>
+</head>
+<body>
+    <div id="inital_buttons">
+        <button type="submit" onclick="logout()">Sair</button>
+        <button type="submit" onclick="deleteAccount()">Deletar Conta</button>
+    </div>
+    <div id="all">
+        <h1>Vnevizinhos</h1>
+        <h2>Bem-vindo ao Vnevizinhos</h2>
+        <p>Aqui você pode encontrar os seus vizinhos</p>
+
+        <form id="commentForm" action="../manage/getComment.php" method="POST">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" required>
+            
+            <label for="comment">Comentário:</label>
+            <textarea id="comment" name="comment" rows="4" required></textarea>
+            
+            <button type="submit">Enviar Comentário</button>
+        </form>
+
+        <div id="comments"></div>
+
+        <footer>
+            <p>&copy;2024 Vinicios Neves. Todos os direitos reservados</p>
+        </footer>
+    </div>
+    <script src="../JSs/vnevizinhos.js"></script>
+</body>
+</html>
