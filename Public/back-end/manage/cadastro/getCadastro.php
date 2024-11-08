@@ -10,16 +10,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 error_log("Requisição recebida: " . file_get_contents('php://input'));
 error_log("Método recebido: " . $_SERVER['REQUEST_METHOD']);
 
-require_once 'conectionDB.php';
+require_once '../DB/conectionDB.php';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST["nameUser"] ?? null;
-    $lastname = $_POST["lastname"] ?? null;
-    $birthdate = $_POST["birthdate"] ?? null;
-    $nickname = $_POST["nickname"] ?? null;
-    $password = $_POST["password"] ?? null;
-    $confirnPassword = $_POST["confirnPassword"] ?? null;
+    $name = $_POST["nameUser"];
+    $lastname = $_POST["lastname"];
+    $birthdate = $_POST["birthdate"];
+    $nickname = $_POST["nickname"];
+    $password = $_POST["password"];
+    $confirnPassword = $_POST["confirnPassword"];
 
     $name = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
     $lastname = htmlspecialchars($lastname, ENT_QUOTES, 'UTF-8');
@@ -57,16 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $passwordIgual = 'true';
     }
 
-    echo json_encode([
-        "messageNickname" => $nicknameExiste == 'true' ? "Nickname já existe" : "nickname disponível",
-        "nicknameExiste" => $nicknameExiste,
-        "messagePassword" => $passwordIgual == 'true' ? "Senhas iguais" : "As senhas não são iguais",
-        "passwordIgual" => $passwordIgual,
-        "dataisValida" => $dataisValida,
-        "messageData" => $dataisValida == 'true' ? "Data válida" : "Data inválida",
-    ]);
-    exit;
-
     if ($nicknameExiste == 'false' && $passwordIgual == 'true' && $dataisValida == 'true') {
         $dados = [
             'name' => $name,
@@ -83,11 +73,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         try {
             $stmt->execute($dados);
-            echo json_encode(["sucesso" => true, "mensagem" => "Usuário cadastrado com sucesso"]);
         } catch (PDOException $e) {
             echo json_encode(["sucesso" => false, "mensagem" => "Erro ao cadastrar usuário: " . $e->getMessage()]);
         }
     }
+
+    echo json_encode([
+        "messageNickname" => $nicknameExiste == 'true' ? "Nickname já existe" : "nickname disponível",
+        "nicknameExiste" => $nicknameExiste,
+        "messagePassword" => $passwordIgual == 'true' ? "Senhas iguais" : "As senhas não são iguais",
+        "passwordIgual" => $passwordIgual,
+        "dataisValida" => $dataisValida,
+        "messageData" => $dataisValida == 'true' ? "Data válida" : "Data inválida"
+    ]);
+    exit;
 
     http_response_code(200);
 } else {

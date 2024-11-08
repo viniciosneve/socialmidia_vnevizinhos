@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     if (localStorage.getItem('logado') == 'true') {
-        window.location.href = 'file:///C:/Users/vinic/Desktop/codigos/projetos_oficiais/tentando_criar_portifolio/redesocial/font-end/html/vnevizinhos.html';
+        window.location.href = 'http://localhost:8080/html/vnevizinhos/vnevizinhos.html';
     }
 });
 
@@ -49,7 +49,7 @@ document.getElementById('sendLogin').addEventListener('submit', async function (
     formData.append('password', password.value.trim());
 
     try {
-        const response = await fetch('http://localhost:8000/back-end/manage/getLogin.php', {
+        const response = await fetch('http://localhost:8000/back-end/manage/login/getLogin.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -59,27 +59,29 @@ document.getElementById('sendLogin').addEventListener('submit', async function (
      
         if (response.ok) {
             document.getElementById('sendLogin').reset();
+
+            const data = await response.json();
+            if (data["login"] == 'false') {
+                if (document.getElementById('AlertLoginNotExist') == null) {
+                    const alertLoginNotExist = creatingMensageError('login ou senha incorreta', 'AlertLoginNotExist');
+                    document.getElementById('sendLogin').appendChild(alertLoginNotExist);
+                }
+                localStorage.setItem('logado', 'false');
+
+            } else if (data["login"] == 'true') {
+                if (document.getElementById('AlertLoginNotExist')) {
+                    document.getElementById('sendLogin').removeChild(document.getElementById('AlertLoginNotExist'));
+                }
+                localStorage.setItem('logado', 'true');
+                localStorage.setItem('nickname', data['nickname']);
+                window.location.href = 'http://localhost:8080/html/vnevizinhos/vnevizinhos.html';
+            }
+
         } else {
             alert('Erro ao enviar o formulário. Tente novamente.');
         }
 
-        const data = await response.json();
-        if (data["login"] == 'false') {
-            if (document.getElementById('AlertLoginNotExist') == null) {
-                const alertLoginNotExist = creatingMensageError('login ou senha incorreta', 'AlertLoginNotExist');
-                document.getElementById('sendLogin').appendChild(alertLoginNotExist);
-            }
-            localStorage.setItem('logado', 'false');
-
-        } else if (data["login"] == 'true') {
-            if (document.getElementById('AlertLoginNotExist')) {
-                document.getElementById('sendLogin').removeChild(document.getElementById('AlertLoginNotExist'));
-            }
-            localStorage.setItem('logado', 'true');
-            localStorage.setItem('nickname', data['nickname']);
-            window.location.href = 'file:///C:/Users/vinic/Desktop/codigos/projetos_oficiais/tentando_criar_portifolio/redesocial/font-end/html/vnevizinhos.html';
-        }
-
+        
 
     } catch (error) {
         alert('Ocorreu um erro: ' + error.message);

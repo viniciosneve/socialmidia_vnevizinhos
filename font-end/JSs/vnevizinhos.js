@@ -1,12 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     if (localStorage.getItem('logado') == 'false') {
-        window.location.href = 'file:///C:/Users/vinic/Desktop/codigos/projetos_oficiais/tentando_criar_portifolio/redesocial/font-end/html/login.html';
+        window.location.href = 'http://localhost:8080/html/login/login.html';
     }
-
-    fetch("http://localhost:8000/back-end/manage/updatePublis.php")
-    .catch(error => console.error("Erro ao rodar o arquivo PHP:", error));
+    
 });
-
 
 
 const nickname = localStorage.getItem('nickname');
@@ -17,38 +14,37 @@ InputNickname.name = 'nickname';
 InputNickname.value = nickname;
 document.getElementById('commentForm').appendChild(InputNickname);
 
+async function gettingComments() {
+    try {
+        const response = await fetch('http://localhost:8000/back-end/manage/vnevizinhos/updateComments.php', {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        });
+        
+        if (response.ok) {
+        } else {
+            alert('Erro ao enviar o formulário. Tente novamente.');
+        }
 
-//enviando o nickname para o back-end para pegar os comentarios e trazer para o front-end.
+        const data = await response.json();
+        const comments = data["comments"];
 
-/*fetch('http://localhost:8000/back-end/manage/getComments.php', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    body: new URLSearchParams({
-        'nickname': nickname
-    }).toString()
-})
-.then(response => response.json())
-.then(data => {
+        comments.forEach(item => {
+            const divHaveEachComment = document.createElement('div');
+            divHaveEachComment.classList.add('divToEachComment');
+            divHaveEachComment.id = 'postFrom'+item['nickname'];
+            divHaveEachComment.innerHTML = '<p id= "CommentTitleFromUser'+ item['nickname']+'" class= "Comments_Title">'+item["title"]+'</p><p id= "CommentFromUser'+ item['nickname']+'" class= "Comments_Comment">'+item["comment"]+'</p><p id= "PostFromUser'+ item['nickname']+'" class= "Comments_Nickname">'+item["nickname"]+'</p>';
+            document.getElementById('comments').appendChild(divHaveEachComment);
+        });
 
-    data[0].forEach(comments => {
-        const creatingDivToEachComment = document.createElement('div');
-        creatingDivToEachComment.classList.add('creatingDivToEachComment');
-        creatingDivToEachComment.innerHTML = `
-        <h3 class="Comment's_Nickname">Comentário de ${comments.nickname}</h3>
+    } catch (error) {
+        alert('Ocorreu um erro: ' + errormessage);
 
-        <h4 class="h4_Comment's_Title">Título: </h4>
-        <p class="Comment's_Title">${comments.title}</p>
+    }
+}
 
-        <h4 class="h4_Comment's_Comment">Comentário: </h4>
-        <p class="Comment's_Comment">${comments.comment}</p>
-        `;
-        document.getElementById('comments').appendChild(creatingDivToEachComment);
-    });
-})*/
-
-
+gettingComments();
 
 document.getElementById('commentForm').addEventListener('submit', async function(event) {
     event.preventDefault();
@@ -96,7 +92,7 @@ document.getElementById('commentForm').addEventListener('submit', async function
         informationsComments.append('nickname', nickname);
         
         try {
-            const response = await fetch('http://localhost:8000/back-end/manage/getComment.php', {
+            const response = await fetch('http://localhost:8000/back-end/manage/vnevizinhos/getComment.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -117,13 +113,51 @@ document.getElementById('commentForm').addEventListener('submit', async function
 
 });
 
-/*function logout() {
+async function logout() {
     localStorage.setItem('logado', 'false');
-    window.location.href = 'http://localhost:8000/manage/deslogando.php';
+    const informationsToLogout = new URLSearchParams();
+    informationsToLogout.append('nickname', nickname);
+    try {
+        const response = await fetch('http://localhost:8000/back-end/manage/vnevizinhos/deslogando.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: informationsToLogout.toString()
+        });
+    
+        if (response.ok) {
+        } else {
+            alert('Erro ao tentar delogar o usuário. Tente novamente.');
+        }
+    } catch (error) {
+        alert('Ocorreu um erro: ' + error.message);
+    }
+
+    window.location.href= 'http://localhost:8080/html/entrada/entrada.html';
 }
 
-function deleteAccount() {
+async function deleteAccount() {
     localStorage.setItem('logado', 'false');
-    window.location.href = 'http://localhost:8000/manage/deleteAccount.php';
-}*/
+    const informationsToLogout = new URLSearchParams();
+    informationsToLogout.append('nickname', nickname);
+    try {
+        const response = await fetch('http://localhost:8000/back-end/manage/vnevizinhos/deleteAccount.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: informationsToLogout.toString()
+        });
+    
+        if (response.ok) {
+        } else {
+            alert('Erro ao tentar delogar o usuário. Tente novamente.');
+        }
+    } catch (error) {
+        alert('Ocorreu um erro: ' + error.message);
+    }
+
+    window.location.href= 'http://localhost:8080/html/entrada/entrada.html';
+}
 

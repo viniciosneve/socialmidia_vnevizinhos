@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     if (localStorage.getItem('logado') == 'true') {
-        window.location.href = 'file:///C:/Users/vinic/Desktop/codigos/projetos_oficiais/tentando_criar_portifolio/redesocial/font-end/html/vnevizinhos.html';
+        window.location.href = 'http://localhost:8080/html/vnevizinhos/vnevizinhos.html';
     }
 });
 
@@ -62,7 +62,7 @@ document.getElementById('sendRegister').addEventListener('submit', async functio
     formData.append('confirnPassword', confirnPassword.value.trim());
 
     try {
-        const response = await fetch('http://localhost:8000/back-end/manage/getCadastro.php', {
+        const response = await fetch('http://localhost:8000/back-end/manage/cadastro/getCadastro.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -72,31 +72,35 @@ document.getElementById('sendRegister').addEventListener('submit', async functio
      
         if (response.ok) {
             document.getElementById('sendRegister').reset();
+
+            const data = await response.json();
+            if (data.nicknameExiste == 'true' && document.getElementById('wrongNickname') == null) {
+                const nicknameExiste = creatingMensageError (data.messageNickname, 'wrongNickname');
+                nickname.insertAdjacentElement('afterend', nicknameExiste);
+            } else if (data.nicknameExiste == 'false' && document.getElementById('wrongNickname')) {
+                document.getElementById('sendRegister').removeChild(document.getElementById('wrongNickname'));
+            }
+
+            if (data.passwordIgual == 'false' && document.getElementById('wrongPassword') == null) {
+                const passwordDiferent = creatingMensageError (data.messagePassword, 'wrongPassword');
+                password.insertAdjacentElement('afterend', passwordDiferent);
+            } else if (data.passwordIgual == 'true' && document.getElementById('wrongPassword')) {
+                document.getElementById('sendRegister').removeChild(document.getElementById('wrongPassword'));
+            }
+
+            if (data.dataisValida == 'false' && document.getElementById('wrongBirthdate') == null) {
+                const dataInvalida = creatingMensageError (data.messageData, 'wrongBirthdate');
+                birthdate.insertAdjacentElement('afterend', dataInvalida);
+            } else if (data.dataisValida == 'true' && document.getElementById('wrongBirthdate')) {
+                document.getElementById('sendRegister').removeChild(document.getElementById('wrongBirthdate'));
+            }
+            
+            
         } else {
             alert('Erro ao enviar o formulário. Tente novamente.');
         }
 
-        const data = await response.json();
-        if (data.dataisValida == 'false' && document.getElementById('wrongBirthdate') == null) {
-            const dataInvalida = creatingMensageError (data.messageData, 'wrongBirthdate');
-            birthdate.insertAdjacentElement('afterend', dataInvalida);
-        } else if (data.dataisValida == 'true' && document.getElementById('wrongBirthdate')) {
-            document.getElementById('sendRegister').removeChild(document.getElementById('wrongBirthdate'));
-        }
         
-        if (data.nicknameExiste == 'true' && document.getElementById('wrongNickname') == null) {
-            const nicknameExiste = creatingMensageError (data.messageNickname, 'wrongNickname');
-            nickname.insertAdjacentElement('afterend', nicknameExiste);
-        } else if (data.nicknameExiste == 'false' && document.getElementById('wrongNickname')) {
-            document.getElementById('sendRegister').removeChild(document.getElementById('wrongNickname'));
-        }
-
-        if (data.passwordIgual == 'false' && document.getElementById('wrongPassword') == null) {
-            const passwordDiferent = creatingMensageError (data.messagePassword, 'wrongPassword');
-            password.insertAdjacentElement('afterend', passwordDiferent);
-        } else if (data.passwordIgual == 'true' && document.getElementById('wrongPassword')) {
-            document.getElementById('sendRegister').removeChild(document.getElementById('wrongPassword'));
-        }
     } catch (error) {
         alert('Ocorreu um erro: ' + error.message);
 

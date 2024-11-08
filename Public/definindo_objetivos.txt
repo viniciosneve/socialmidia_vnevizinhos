@@ -42,9 +42,9 @@ Metas elaboradas:
 
       Fazer teste!!!!!!!!!!!!!!
     
-      Quando a pessoa finalizar o cadastro, redirecionar para a pagina de login. (pedente) 
+      Quando a pessoa finalizar o cadastro, redirecionar para a pagina de login. (finalizado) 
 
-      Colocar um botão para redirecionar a pagina para a pagina de login. (pendente)
+      Colocar um botão para redirecionar a pagina para a pagina de login. (finalizado)
     
 
         =========================
@@ -53,24 +53,24 @@ Metas elaboradas:
      A segunda pagina deve ter:
       
       Criar um ou dois paragrafos descrevendo o que é
-    a rede social. (Incompleto)
+    a rede social. (completo)
 
       Criar dois botões no campo superior direito da tela, um para a pagina de
     cadastramento, e o outro que cria um formulário para pegar as informações
-    de login, e senha do usuário. (Incompleto)
+    de login, e senha do usuário. (completo)
 
       Depois verificar as informações que veio do formalário de login para
-    evitar hackeamento e evitar campos vazios.
+    evitar hackeamento e evitar campos vazios.(completo)
 
       Depois que tudo isso estiver verificado enviar as inforamção
     para um arquivo JSON, pegas as informações do arquivo JSON com
     o PHP e fazer uma verificação de login e senha, depois que as
     informações forem confirmadas, deve colocar no DB e no JSON, que
-    o usuário está on.
+    o usuário está on.(completo)
 
       Depois com o JS pegas a informação para saber se o usuário está
     logado ou não, se estiver logado redirecionar para a pagina dos
-    usuários, caso não esteja logado, não fazer o redirecionamento.
+    usuários, caso não esteja logado, não fazer o redirecionamento.(completo)
 
  ===========================================
 
@@ -79,32 +79,32 @@ Metas elaboradas:
 
       Criar uma coluna que indica se o usuário está logado ou não,
     e depois usar a conexão com o banco de dados para colocar que
-    o usuário está logado quando ele fazer o login.
+    o usuário está logado quando ele fazer o login.(completo)
 
       Pega a inforamção de que o usuário está logado ou não no
-    banco de dados e passar para o JSON de que ele esta logado.
+    banco de dados e passar para o JSON de que ele esta logado.(completo)
 
       Nas paginas de login e cadastramento, vamos usar o JS para
     pegar a inforamção do JSON para ver se o usuário está logado
     ou não, se a inforamção der como que o usuário está logado,
     ambas as pagina irão redirecionar para a pagina dos usuários,
     se não estiver logado, então não será redirecionado para a pagina dos
-    usuários.
+    usuários.(completo)
 
       Usar o JS para verificar o JSON para saber se o usuário está
     logado ou não, se não estiver logado, a pagina deve redirecionar
     o mesmo para a pagina de login, caso esteja logado permanecer o
-    usuario lá mesmo.
+    usuario lá mesmo.(completo)
 
       Vamos criar um campo de texto para que o usuário possa criar
     o seu comenatário, quando criado, deve primeiro ser redirecionado
     para um arquivo JSON, e então o PHP deve pegar essa nova
-    informação e colocar no banco de dados e no JSON de comenatários.
+    informação e colocar no banco de dados e no JSON de comenatários.(completo)
 
       Vamos pegar o JSON dos comentarios com o JS e mandar para a pagina
-    e lá colocar todos os comenatários em ordem decresente.
+    e lá colocar todos os comenatários em ordem decresente.(completo)
 
-     botão de deslogar.
+     botão de deslogar.(completo)
 
       
 

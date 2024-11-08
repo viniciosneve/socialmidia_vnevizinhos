@@ -1,8 +1,8 @@
 <?php
 
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: http://localhost:8080");
 header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Headers: content-Type, Content-Type");
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit(0);
 }
@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 error_log("Requisição recebida: " . file_get_contents('php://input'));
 error_log("Método recebido: " . $_SERVER['REQUEST_METHOD']);
 
-require_once 'conectionDB.php';
+require_once '../DB/conectionDB.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

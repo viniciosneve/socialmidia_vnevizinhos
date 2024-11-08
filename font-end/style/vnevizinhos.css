@@ -52,7 +52,7 @@ div {
     align-items: center;
 }
 
-.creatingDivToEachComment {
+.divToEachComment {
     margin-top: 20%;
     border: 2px solid;
     width: 80%;
@@ -60,18 +60,18 @@ div {
     justify-content: space-around;
 }
 
-.Comment\'s_Nickname {
+.Comments_Nickname {
     margin-bottom: 2%;
 }
 
-.Comment\'s_Title {
+.Comments_Title {
     width: 100%;
     word-wrap: break-word;
     text-align: center;
     margin-bottom: 5%;
 }
 
-.Comment\'s_Comment {
+.Comments_Comment {
     width: 100%;
     word-wrap: break-word;
     text-align: center;
@@ -81,4 +81,34 @@ footer {
     height: 10ch;
     display: flex;
     align-items: center;
+}
+
+#buttons_configurations{
+    display: flex;
+}
+.toggle-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.toggle-content {
+    display: none;
+    margin-top: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+}
+
+#toggle-checkbox:checked ~ .toggle-content {
+    display: block;
+}
+#toggle-checkbox {
+    display: none;
 }

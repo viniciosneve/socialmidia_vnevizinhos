@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vnevizinhos</title>
+</head>
+<body>
+
+    <h1 id="TitleWithNickname"></h1>
+    <p id="nickname"></p>
+    <p id="birthdate"></p>
+    <p id="userLoged"></p>
+
+    <h2 id="titleComments">Here is all post you did</h2>
+    <div id="comments"></div>
+
+    <footer>
+        <p>&copy;2024 Vinicios Neves. Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        var script = document.createElement('script');
+        script.src = '../../JSs/perfil.js?v=' + new Date().getTime();
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>
